@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>Sign Up</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Sign Up For the Service</h1>
+	<form action="sign_up.php" method="post" id="signup" onsubmit="return onsignup()">
+		<div class="field">
+			<label for="fname">First Name</label>
+			<input type="text" id="fname" name="fname">
+		</div>
+		<div class="field">
+			<label for="lname">Last Name</label>
+			<input type="text" id="lname" name="lname">
+		</div>
+		<div class="field">
+			<label for="email">Email Address</label>
+			<input type="email" id="email" name="email">
+		</div>
+		<div class="field">
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password">
+		</div>
+		<div class="field">
+			<label for="rpassword">Repeat Password</label>
+			<input type="password" id="rpassword" name="rpassword">
+		</div>
+		<input type="submit">
+	</form>
+
+	<script>
+	var check = function(fid, check, flag) {
+		flag = (typeof flag !== 'undefined') ? flag : false;
+		var field = $(fid).val();
+		var reg = check;
+		if (field.search(reg) == -1) {
+			return flag;
+		} else {
+			return !flag;
+		}
+	}
+	var onsignup = function() {
+		var regex = /^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/;
+		var noop = check("form#signup #email", regex);
+		return noop;
+	}
+	</script>
+	<p>Already have an account? <a href="login.html">Sign in</a> here.</p>
+</body>
+</html>
