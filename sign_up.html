@@ -1,51 +1,106 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<title>Sign Up</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<!-- Javascript libraries -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="js/less-1.7.5.js"></script> 
+	<script src="js/responsive-nav.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+	<link rel="stylesheet" href="css/responsive-nav.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<h1>Sign Up For the Service</h1>
-	<form action="sign_up.php" method="post" id="signup" onsubmit="return onsignup()">
-		<div class="field">
-			<label for="fname">First Name</label>
-			<input type="text" id="fname" name="fname">
+	<header class="bg-primary">
+		<div class="container">
+			<div class="menu-custom">
+				<a href="sign_up.html">
+					<button type="button" class="btn btn-default navbar-btn hidden-xs">Sign up</button>
+				</a>
+				<a href="login.html">
+					<button type="button" class="btn btn-default navbar-btn hidden-xs">Log in</button>
+				</a>
+				<a id="toggle" class="visible-xs">
+					<img src="img/ham.svg" alt="Menu" width="70" height="70"/>
+				</a>
+			</div>
+			<h1>Resume Generator</h1>
 		</div>
-		<div class="field">
-			<label for="lname">Last Name</label>
-			<input type="text" id="lname" name="lname">
+	</header>
+	<nav class="nav-collapse mob-nav">
+		<ul class="nav nav-pills visible-xs">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="index.html">About</a></li>
+			<li><a href="sign_up.html">Sign Up</a></li>
+			<li class="active"><a href="login.html">Login</a></li>
+		</ul>
+	</nav>
+	<section class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Sign Up For the Service</h1>
+			</div>
 		</div>
-		<div class="field">
-			<label for="email">Email Address</label>
-			<input type="email" id="email" name="email">
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+				<form action="sign_up.php" class="login" method="post" role="form" onsubmit="return onsignup()">
+					<div class="form-group">
+						<label for="fname">First Name</label>
+						<input type="text" class="form-control" id="fname" name="fname">
+					</div>
+					<div class="form-group">
+						<label for="lname">Last Name</label>
+						<input type="text" class="form-control" id="lname" name="lname">
+					</div>
+					<div class="form-group">
+						<label for="email">Email Address</label>
+						<input type="email" class="form-control" id="email" name="email">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" id="password" name="password">
+					</div>
+					<div class="form-group">
+						<label for="rpassword">Repeat Password</label>
+						<input type="password" class="form-control" id="rpassword" name="rpassword">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-default">Submit</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-8 col-sm-6">
+				<p>Already have an account? <a href="login.html">Sign in</a> here.</p>
+			</div>
 		</div>
-		<div class="field">
-			<label for="password">Password</label>
-			<input type="password" id="password" name="password">
-		</div>
-		<div class="field">
-			<label for="rpassword">Repeat Password</label>
-			<input type="password" id="rpassword" name="rpassword">
-		</div>
-		<input type="submit">
-	</form>
-
-	<script>
-	var check = function(fid, check, flag) {
-		flag = (typeof flag !== 'undefined') ? flag : false;
-		var field = $(fid).val();
-		var reg = check;
-		if (field.search(reg) == -1) {
-			return flag;
-		} else {
-			return !flag;
+		<script>
+		var check = function(fid, check, flag) {
+			flag = (typeof flag !== 'undefined') ? flag : false;
+			var field = $(fid).val();
+			var reg = check;
+			if (field.search(reg) == -1) {
+				return flag;
+			} else {
+				return !flag;
+			}
 		}
-	}
-	var onsignup = function() {
-		var regex = /^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/;
-		var noop = check("form#signup #email", regex);
-		return noop;
-	}
+		var onsignup = function() {
+			var regex = /^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/;
+			var noop = check("form#signup #email", regex);
+			return noop;
+		}
+		</script>
+	</section>
+	<script>	
+		var navigation = responsiveNav(".nav-collapse", {
+			customToggle: "#toggle"
+		});
 	</script>
-	<p>Already have an account? <a href="login.html">Sign in</a> here.</p>
 </body>
 </html>

@@ -60,40 +60,62 @@ if ($success) {
 	}
 }
 
+function createTable($tableName, $columnParams, $con) {
+	// return value of whether or not the table was successfully created/detected
+	$sscc = true;
+	// Create table
+	$sql="CREATE TABLE ".$tableName."(".$columnParams.");";
+	// Execute query
+	if (mysqli_query($con,$sql)) {
+?>
+	<p>Created table "<?php echo $tableName; ?>".</p>
+<?php
+	} else {
+		$error = mysqli_error($con);
+		if ("Table '".strtolower($tableName)."' already exists" == $error) {
+?>
+	<p>Table "<?php echo $tableName; ?>" already exits.</p>
+<?php
+		} else {
+		$error = mysqli_error($con);
+?>
+	<p class="errortitle">Failed to create table "<?php echo $tableName; ?>".</p>
+	<p class="small">Error info: <?php echo $error; ?></p>
+<?php
+			$sscc = false;
+		}
+	}
+	return $sscc;
+}
+
 // Create "Users" Table
 if ($success) {
-	// Create table
-	$sql="CREATE TABLE Users(
+?>
+<h2>Creating Tables</h2>
+<?php
+	$usersCreate = "
 			PID INT NOT NULL AUTO_INCREMENT, 
 			PRIMARY KEY(PID),
 			FirstName CHAR(30),
 			LastName CHAR(30),
 			Email TEXT,
 			Password CHAR(64),
-			Guid CHAR(36)
-		)";
-	// Execute query
-	if (mysqli_query($con,$sql)) {
-?>
-	<p>Created table "users".</p>
-<?php
-	} else {
-		$error = mysqli_error($con);
-		if ("Table 'users' already exists" == $error) {
-?>
-	<p>Table "users" already exits.</p>
-<?php
-		} else {
-?>
-	<p class="errortitle">Failed to create table "users".</p>
-	<p class="small">Error info: <?php echo $error; ?></p>
-<?php
-			$success = false;
-		}
+			Guid CHAR(36)";
+	if (createTable("Users", $usersCreate, $con) == false) {
+		$success = false;
+	}
+	$skillsCreate = "
+		PID INT NOT NULL AUTO_INCREMENT, 
+		PRIMARY KEY(PID),
+		Contents TEXT,
+		Display BOOL,
+		FID INT,
+		FOREIGN KEY (FID) REFERENCES Users(PID)
+	";
+	if (createTable("Skills", $skillsCreate, $con) ==  false) {
+		$success = false;
 	}
 }
-
-
 
 ?>
 	</body>

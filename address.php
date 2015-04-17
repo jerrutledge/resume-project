@@ -17,8 +17,10 @@
 		$connection = false;
 	}
 ?>
+<h1>List of Addresses: </h1>
 	<ul>
-		<?php while  ?>
+		<li>Create a list of Addresses, first</li>
+		<li>Create Table</li>
 	</ul>
 </body>
 </html>

@@ -102,54 +102,96 @@
 		}
 	}
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Thank you for Signing Up!</title>
+	<title>Sign Up Result</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<!-- Javascript libraries -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="js/less-1.7.5.js"></script> 
+	<script src="js/responsive-nav.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+	<link rel="stylesheet" href="css/responsive-nav.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<h1>Thank you for Signing Up!</h1>
+	<header class="bg-primary">
+		<div class="container">
+			<div class="menu-custom">
+				<a href="sign_up.html">
+					<button type="button" class="btn btn-default navbar-btn hidden-xs">Sign up</button>
+				</a>
+				<a href="login.html">
+					<button type="button" class="btn btn-default navbar-btn hidden-xs">Log in</button>
+				</a>
+				<a id="toggle" class="visible-xs">
+					<img src="img/ham.svg" alt="Menu" width="70" height="70"/>
+				</a>
+			</div>
+			<h1>Resume Generator</h1>
+		</div>
+	</header>
+	<nav class="nav-collapse mob-nav">
+		<ul class="nav nav-pills visible-xs">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="index.html">About</a></li>
+			<li><a href="sign_up.html">Sign Up</a></li>
+			<li class="active"><a href="login.html">Login</a></li>
+		</ul>
+	</nav>
+	<section class="container">
 	<?php 
 		if ($valid) {
 			?>
+				<h1>Thank you for Signing Up!</h1>
 				<p>Your data appears valid, and we will send you an email shortly.</p>
 			<?php
 		} else {
 			?>
+				<h1>Error - Cannot Sign Up</h1>
 				<p>Unfortunately, your data doesn't seem valid at all. Please press the 'back' button on your browser and try again. See list below the table for more information.</p>
 			<?php
 		}
 	?>
 	<p>This is the data we recorded:</p>
-	<table>
-		<thead>
-			<tr>
-				<th>Field Name</th>
-				<th>Field Value</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>First Name</td>
-				<td><?php if (isset($fname)) {echo $fname;} else {echo "Variable not set.";} ?></td>
-			</tr>
-			<tr>
-				<td>Last Name</td>
-				<td><?php  if (isset($lname)) {echo $lname;} else {echo "Variable not set.";} ?></td>
-			</tr>
-			<tr>
-				<td>Email Address</td>
-				<td><?php if (isset($email)) {echo $email;} else {echo "Variable not set.";} ?></td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><?php if (isset($password)) {echo $password;} else {echo "Variable not set.";} ?></td>
-			</tr>
-			<tr>
-				<td>Repeat Password</td>
-				<td><?php if (isset($rpassword)) {echo $rpassword;} else {echo "Variable not set.";} ?></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Field Name</th>
+					<th>Field Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>First Name</td>
+					<td><?php if (isset($fname)) {echo $fname;} else {echo "Variable not set.";} ?></td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><?php  if (isset($lname)) {echo $lname;} else {echo "Variable not set.";} ?></td>
+				</tr>
+				<tr>
+					<td>Email Address</td>
+					<td><?php if (isset($email)) {echo $email;} else {echo "Variable not set.";} ?></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><?php if (isset($password)) {echo $password;} else {echo "Variable not set.";} ?></td>
+				</tr>
+				<tr>
+					<td>Repeat Password</td>
+					<td><?php if (isset($rpassword)) {echo $rpassword;} else {echo "Variable not set.";} ?></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<?php 
 		if ($valid && $success) {
 			?>
@@ -157,12 +199,18 @@
 			<?php
 		} else {
 			?>
-				<p>Here is a list of reasons why your data is invalid:</p>
+				<h2>Here is a list of reasons why your data is invalid:</h2>
 				<ul>
 					<?php echo $err; ?>
 				</ul>
 			<?php
 		}
 	?>
+	</section>
+	<script>	
+		var navigation = responsiveNav(".nav-collapse", {
+			customToggle: "#toggle"
+		});
+	</script>
 </body>
 </html>

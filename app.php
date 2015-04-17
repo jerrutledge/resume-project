@@ -1,21 +1,42 @@
 <?php if (!isset($_COOKIE["user"])) {
-	echo "ohno";
 	include "error.php";
 	exit();
-} ?>
+}
 
-<html>
-<head>
-	<title>Resume Builder</title>
-</head>
-<body>
-<h1>Resume Builder</h1>
-<p>Welcome, <?php echo $_COOKIE["user"] ?>. Here is a list of Functions:</p>
-<ul>
-	<li><a href="address.php">Add / Edit / Delete Address</a></li>
-	<li>Add / Edit / Delete Skill</li>
-	<li>Add / Edit / Delete Employment</li>
-</ul>
-<p><a href="logout.php">Log out</a>.</p>
+$title = "App";
+include "html_header.php";
+
+?>
+
+	<section class="container">
+		<h1>{{"Hello, Angular!"}}</h1>
+		<div class="row" ng-controller="skillsController">
+			<div class="col-md-8 col-sm-10">
+				<div class="paper">
+					<h1>Resume</h1>
+					<p>Hi I'm a person called George. Thanks for asking!</p>
+					<h3>Skills</h3>
+					<ul>
+						<li ng-repeat="skill in skills" ng-show="skill.active">{{ skill.name }}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-2">
+				<h2>Skills Section</h2>
+				<form role="form">
+					<div class="checkbox" ng-repeat="skill in skills">
+						<label>
+							<input type="checkbox" ng-model="skill.active">{{skill.name}}
+						</label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<script>	
+		var navigation = responsiveNav(".nav-collapse", {
+			customToggle: "#toggle"
+		});
+	</script>
 </body>
 </html>
