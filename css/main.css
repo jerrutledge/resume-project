@@ -1,0 +1,28 @@
+header {
+	background-color: @brand-primary;
+}
+
+div.menu-custom {
+	float: right;
+}
+
+div.menu-custom button {
+	margin-top: 21px;
+}
+
+nav.nav-collapse.mob-nav ul {
+	border-bottom: 1px solid rgb(66, 139, 202);
+}
+
+nav.nav-collapse.mob-nav.opened ul {
+	padding-bottom: 10px;
+}
+
+/* PAPER STYLING */
+div.paper {
+	width: 90%;
+	margin: 30px 5% 0;
+	height: 1100px;
+	padding: 55px 70px;
+	box-shadow: 1px 1px 5px 5px rgba(0,0,0,0.2);
+}
