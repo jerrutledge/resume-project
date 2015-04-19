@@ -1,4 +1,4 @@
-var app = angular.module("ResumeGenerator", [ ]);
+var app = angular.module("ResumeGenerator", [ "ui.sortable" ]);
 
 app.controller("skillsController", ['$scope', function($scope) {
 	// Skills
@@ -21,5 +21,20 @@ app.controller("skillsController", ['$scope', function($scope) {
 			$scope.skills.push(newSkill);
 			$scope.newSkillText = "";
 		}
+	}
+
+	// function for deleting skills
+	$scope.editSkill = function (index) {
+		$scope.newSkillText = $scope.skills[index].name;
+		console.log($scope.skills[index].name);
+		$scope.skills.splice(index, 1);
+		$('input[ng-model="newSkillText"]').focus();
+	}
+
+	// allow skill sorting
+	$scope.skillSortable = {
+		containment: "parent",
+		cursor: "move",
+		tolerance: "pointer"
 	}
 }]);

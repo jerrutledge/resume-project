@@ -11,6 +11,8 @@ include "html_header.php";
 	<section class="container">
 		<h1>{{"Hello, Angular!"}}</h1>
 		<div class="row" ng-controller="skillsController">
+
+			<!-- Resume paper -->
 			<div class="col-md-8 col-sm-10">
 				<div class="paper">
 					<h1>Resume</h1>
@@ -21,21 +23,28 @@ include "html_header.php";
 					</ul>
 				</div>
 			</div>
+
+			<!-- Side bar -->
 			<div class="col-md-4 col-sm-2">
+
+				<!-- Skills -->
 				<h2>Edit Skills Section</h2>
-				<form role="form">
+				<div ui-sortable="skillSortable" ng-model="skills">
 					<div class="checkbox" ng-repeat="skill in skills">
+						<a class="edit-link pull-right" ng-click="editSkill($index)">Edit</a>
 						<label>
-							<input type="checkbox" ng-model="skill.active">{{ skill.name }}
+							<input type="checkbox" ng-model="skill.active">
+							{{ skill.name }}
 						</label>
 					</div>
-				</form>
-				<form role="form" class="form-inline" ng-submit="addSkill()">
-					<div class="form-group">
-						<label for="skillInput"></label>
-						<input type="text" placeholder="Add Skill" ng-model="newSkillText" class="form-control" id="skillInput">
+				</div>
+				<form class="form-inline" ng-submit="addSkill()">
+					<div class="input-group">
+						<input type="text" class="form-control" ng-model="newSkillText" placeholder="Add Skill">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit">Add</button>
+						</span>
 					</div>
-					<button type="submit" class="btn btn-default">Add</button>
 				</form>
 			</div>
 		</div>

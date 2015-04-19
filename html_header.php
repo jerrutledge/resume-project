@@ -10,6 +10,8 @@
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/less/dist/less.js"></script> 
 	<script src="node_modules/responsive-nav/responsive-nav.min.js"></script>
+	<script src="node_modules/jquery-ui-browserify/dist/jquery-ui.min.js"></script>
+	<script src="node_modules/angular-ui-sortable/src/sortable.js"></script>
 	<script src="js/resume_angular_app.js"></script>
 
 	<!-- CSS -->
