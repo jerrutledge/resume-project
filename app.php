@@ -22,17 +22,25 @@ include "html_header.php";
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-2">
-				<h2>Skills Section</h2>
+				<h2>Edit Skills Section</h2>
 				<form role="form">
 					<div class="checkbox" ng-repeat="skill in skills">
 						<label>
-							<input type="checkbox" ng-model="skill.active">{{skill.name}}
+							<input type="checkbox" ng-model="skill.active">{{ skill.name }}
 						</label>
 					</div>
+				</form>
+				<form role="form" class="form-inline" ng-submit="addSkill()">
+					<div class="form-group">
+						<label for="skillInput"></label>
+						<input type="text" placeholder="Add Skill" ng-model="newSkillText" class="form-control" id="skillInput">
+					</div>
+					<button type="submit" class="btn btn-default">Add</button>
 				</form>
 			</div>
 		</div>
 	</section>
+
 	<script>	
 		var navigation = responsiveNav(".nav-collapse", {
 			customToggle: "#toggle"
