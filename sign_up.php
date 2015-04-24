@@ -17,7 +17,7 @@
 		if (function_exists('com_create_guid')){
 			return com_create_guid();
 		}else{
-			mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
+			mt_srand((double)microtime()*10000);
 			$charid = strtoupper(md5(uniqid(rand(), true)));
 			$hyphen = chr(45);// "-"
 			$uuid = substr($charid, 0, 8).$hyphen
@@ -30,9 +30,12 @@
 	}
 	$guid = getGUID();
 
+
+	/* ================= START INFO VALIDATION ================= */
+
 	// check all fields are valid
 	$valid = true;
-	$err = "";
+	$err = ""; // list of errors
 	if (isset($_POST['fname'])) {
 		$fname = mysqli_real_escape_string($con, $_POST['fname']);
 		if (strlen($fname) <= 0) {
@@ -93,6 +96,9 @@
 		$err .= "<li>Repeat Password is not set.</li>";
 	}
 
+	/* ================= END INFO VALIDATION ================= */
+
+
 	// execute SQL
 	if ($valid && $success) {
 		$sql="INSERT INTO Users (FirstName, LastName, Email, Password, Guid)
@@ -101,6 +107,8 @@
 			die('Error: ' . mysqli_error($con));
 		}
 	}
+
+	// TODO improve layout
 ?>
 <!DOCTYPE html>
 <html lang="en">
