@@ -15,10 +15,8 @@ if (isset($error)) {
 ?>
 		<p>Try <a href="login.html">logging in</a> again.</p>
 	</section>
-	<script>
-		var navigation = responsiveNav(".nav-collapse", {
-			customToggle: "#toggle"
-		});
-	</script>
-</body>
-</html>
+<?php
+
+include "footer.php";
+
+?>
