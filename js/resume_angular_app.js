@@ -1,15 +1,42 @@
 var app = angular.module("ResumeGenerator", [ "ui.sortable" ]);
 
-app.controller("skillsController", ['$scope', function($scope) {
+app.controller("skillsController", ['$scope', '$http', function($scope, $http) {
+
+	// grab cookies from php
+	$scope.init = function(session_id) {
+        $scope.session_id = session_id;
+		// config http headers
+		$http.defaults.headers.common.Authorization = $scope.session_id;
+
+        var getSkillsBody = {
+        	"session_id":($scope.session_id)
+        }
+
+        $scope.serverResponse = "Fetching data...";
+
+		// get skills from server
+		$http.get('get_skills.php').
+		success(function (data, status, headers, config) {
+			$scope.skills = data;
+			$scope.serverResponse = "Successfully got skills from server: "+data;
+		}).
+		error(function (data, status, headers, config) {
+			console.log(data);
+			console.log(status)
+			console.log(headers)
+			console.log(config)
+			$scope.serverResponse = "FAIL: ";
+		});
+    }
+
 	// Skills
-	$scope.skills = [
-		{"name": "Painting", "active": false},
-		{"name": "Archiving", "active": false},
-		{"name": "Using Glue", "active": false}
-	];
+	$scope.skills = [];
 
 	// new skill
 	$scope.newSkillText = "";
+
+	// server Response text
+	$scope.serverResponse = "";
 
 	// function for adding skills
 	$scope.addSkill = function () {
@@ -20,6 +47,17 @@ app.controller("skillsController", ['$scope', function($scope) {
 			}
 			$scope.skills.push(newSkill);
 			$scope.newSkillText = "";
+
+			newSkill["session_id"] = $scope.session_id;
+
+			// send skills to server
+			$http.post('update_skill.php', newSkill).
+			success(function (data, status, headers, config) {
+				$scope.serverResponse = "GOT IT: "+data;
+			}).
+			error(function (data, status, headers, config) {
+				$scope.serverResponse = "FAIL: "+status;
+			});
 		}
 	}
 

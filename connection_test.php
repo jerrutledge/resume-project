@@ -104,6 +104,16 @@ if ($success) {
 	if (createTable("Users", $usersCreate, $con) == false) {
 		$success = false;
 	}
+	$sessionCreate = "
+		PID INT NOT NULL AUTO_INCREMENT, 
+		PRIMARY KEY(PID),
+		SessionKey TEXT,
+		FID INT,
+		FOREIGN KEY (FID) REFERENCES Users(PID)
+	";
+	if (createTable("Sessions", $sessionCreate, $con) == false) {
+		$success = false;
+	}
 	$skillsCreate = "
 		PID INT NOT NULL AUTO_INCREMENT, 
 		PRIMARY KEY(PID),
@@ -112,7 +122,7 @@ if ($success) {
 		FID INT,
 		FOREIGN KEY (FID) REFERENCES Users(PID)
 	";
-	if (createTable("Skills", $skillsCreate, $con) ==  false) {
+	if (createTable("Skills", $skillsCreate, $con) == false) {
 		$success = false;
 	}
 }
