@@ -1,4 +1,8 @@
 <?php
+// TODO return PID of added skills
+// TODO handle updating skill
+
+
 
 // get data from body
 $requestBody = file_get_contents('php://input');
@@ -44,3 +48,5 @@ if ($valid) {
 Request body: <?php echo $requestBody; ?>
 
 Request soul: New skill named <?php echo $requestParsedJSON->{'name'} ?>
+
+ID: 

@@ -4,6 +4,11 @@
 $headers = apache_request_headers();
 $session_id = $headers['Authorization'];
 
+// get data from body
+$requestBody = file_get_contents('php://input');
+$requestParsedJSON = json_decode($requestBody);
+$
+
 // connect to db - use $con
 include 'connect.php';
 
@@ -13,7 +18,7 @@ include 'session_to_user.php';
 
 if ($userID != "") {
 	// query database
-	$result = mysqli_query($con,"SELECT * FROM Skills WHERE FID = '$userID';");
+	$result = mysqli_query($con,"DELETE FROM Skills WHERE PID = '$userID';");
 
 	// take the userID from the last session with the given session id
 	echo "[";
@@ -32,10 +37,7 @@ if ($userID != "") {
 		} else {
 			echo "false";
 		}
-		echo ',"_id":'.$row["PID"].'';
-		echo '}';
 	}
-	echo "]";
 } else {
 	echo "error with session_id: ".$session_id;
 }

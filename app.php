@@ -6,6 +6,7 @@ if (!isset($_COOKIE["user"])) {
 	exit();
 }
 
+// header
 $title = "App";
 include "html_header.php";
 
@@ -45,6 +46,7 @@ include "html_header.php";
 					</label>
 				</div>
 			</div>
+			<!-- Skill submit form -->
 			<form class="form-inline" ng-submit="addSkill()">
 				<div class="input-group">
 					<input type="text" class="form-control" ng-model="newSkillText" placeholder="Add Skill">

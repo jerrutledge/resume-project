@@ -21,10 +21,6 @@ app.controller("skillsController", ['$scope', '$http', function($scope, $http) {
 			$scope.serverResponse = "Successfully got skills from server: "+data;
 		}).
 		error(function (data, status, headers, config) {
-			console.log(data);
-			console.log(status)
-			console.log(headers)
-			console.log(config)
 			$scope.serverResponse = "FAIL: ";
 		});
     }
