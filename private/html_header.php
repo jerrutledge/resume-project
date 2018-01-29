@@ -24,7 +24,7 @@
 	<header class="bg-primary">
 		<div class="container">
 			<div class="menu-custom">
-				<a href="sign_up.html">
+				<a href="sign_up.php">
 					<button type="button" class="btn btn-default navbar-btn hidden-xs">Sign up</button>
 				</a>
 				<a href="login.html">
@@ -41,7 +41,7 @@
 		<ul class="nav nav-pills visible-xs">
 			<li><a href="index.html">Home</a></li>
 			<li><a href="index.html">About</a></li>
-			<li><a href="sign_up.html">Sign Up</a></li>
 			<li class="active"><a href="login.html">Login</a></li>
+			<li><a href="sign_up.php">Sign Up</a></li>
 		</ul>
 	</nav>
