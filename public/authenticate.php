@@ -1,6 +1,6 @@
 <?php 
 // connect to db - use $con
-include 'connect.php';
+require 'private/connect.php';
 
 // get email strings
 if (isset($_POST['email'])) {

@@ -1,8 +1,8 @@
 <?php
 
 // header
-$title = "App";
-include "html_header.php";
+$title = "Login";
+include "private/html_header.php";
 
 ?>
 	<section class="container">
@@ -13,7 +13,7 @@ include "html_header.php";
 		</div>
 		<div class="row">
 			<div class="col-md-4 col-sm-6">
-				<form action="login.php" class="login" method="post" role="form">
+				<form action="<?php echo $basepath; ?>authenticate" class="login" method="post" role="form">
 					<div class="form-group">
 						<label for="email">Email</label>
 						<input type="email" class="form-control" id="email" name="email">
@@ -34,5 +34,5 @@ include "html_header.php";
 	</section>
 
 <?php 
-include "footer.php";
+include "private/footer.php";
 ?>

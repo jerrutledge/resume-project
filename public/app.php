@@ -1,8 +1,8 @@
 <?php 
 // check if user is logged in
 if (!isset($_COOKIE["user"])) {
-	$error = '<p>You have been logged out. Please <a href="login.html">log in</a> again.</p>';
-	include "error.php";
+	$error = '<p>You have been logged out. Please <a href="index.php">log in</a> again.</p>';
+	include "../private/error.php";
 	exit();
 }
 
