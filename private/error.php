@@ -13,7 +13,7 @@ if (isset($error)) {
 		<?php
 }
 ?>
-		<p>Try <a href="login.html">logging in</a> again.</p>
+		<p>Try <a href="login.php">logging in</a> again.</p>
 	</section>
 <?php
 
