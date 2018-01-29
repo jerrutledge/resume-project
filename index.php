@@ -1,7 +1,7 @@
 <?php
 
 function getCurrentUri() {
-	// TODO later compare to $_SERVER['SCRIPT_NAME'] to determin relative path
+	// TODO later compare to $_SERVER['SCRIPT_NAME'] to determine relative path
 	$uri = $_SERVER['REQUEST_URI'];
 	$path_array = explode("/", $uri);
 	return $path_array;
