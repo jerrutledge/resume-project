@@ -27,7 +27,7 @@
 				<a href="sign_up.php">
 					<button type="button" class="btn btn-default navbar-btn hidden-xs">Sign up</button>
 				</a>
-				<a href="login.html">
+				<a href="login.php">
 					<button type="button" class="btn btn-default navbar-btn hidden-xs">Log in</button>
 				</a>
 				<a id="toggle" class="visible-xs">
@@ -39,9 +39,9 @@
 	</header>
 	<nav class="nav-collapse mob-nav">
 		<ul class="nav nav-pills visible-xs">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="index.html">About</a></li>
-			<li class="active"><a href="login.html">Login</a></li>
+			<li><a href="index.php">Home</a></li>
+			<li><a href="index.php">About</a></li>
 			<li><a href="sign_up.php">Sign Up</a></li>
+			<li class="active"><a href="login.php">Login</a></li>
 		</ul>
 	</nav>
