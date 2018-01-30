@@ -99,7 +99,7 @@ if ($valid && $success) {
 }
 
 $title = "App";
-include "html_header.php";
+include "private/html_header.php";
 
 ?>
 
@@ -170,5 +170,5 @@ include "html_header.php";
 </section>
 
 <?php 
-include "footer.php";
+include "private/footer.php";
 ?>

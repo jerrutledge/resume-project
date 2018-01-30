@@ -10,7 +10,7 @@ include "private/html_header.php";
 		</div>
 		<div class="row">
 			<div class="col-md-4 col-sm-6">
-				<form action="sign_up.php" class="login" method="post" role="form" onsubmit="return onsignup()">
+				<form action="sign_up_result.php" class="login" method="post" role="form" onsubmit="return onsignup()">
 					<div class="form-group">
 						<label for="fname">First Name</label>
 						<input type="text" class="form-control" id="fname" name="fname">
