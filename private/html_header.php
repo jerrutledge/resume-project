@@ -39,8 +39,8 @@
 	</header>
 	<nav class="nav-collapse mob-nav">
 		<ul class="nav nav-pills visible-xs">
-			<li><a href="index.php">Home</a></li>
-			<li><a href="index.php">About</a></li>
+			<li><a href="login.php">Home</a></li>
+			<li><a href="login.php">About</a></li>
 			<li><a href="sign_up.php">Sign Up</a></li>
 			<li class="active"><a href="login.php">Login</a></li>
 		</ul>

@@ -1,14 +1,14 @@
 <?php 
 // check if user is logged in
 if (!isset($_COOKIE["user"])) {
-	$error = '<p>You have been logged out. Please <a href="index.php">log in</a> again.</p>';
-	include "../private/error.php";
+	$error = '<p>You have been logged out. Please <a href="login.php">log in</a> again.</p>';
+	include "private/error.php";
 	exit();
 }
 
 // header
 $title = "App";
-include "html_header.php";
+include "private/html_header.php";
 
 ?>
 
@@ -60,5 +60,5 @@ include "html_header.php";
 </section>
 
 <?php 
-include "footer.php";
+include "private/footer.php";
 ?>

@@ -1,6 +1,6 @@
 <?php 
 // connect to db - use $con
-include 'connect.php';
+include 'private/connect.php';
 
 // Generate a string of random characters
 function getGUID(){
